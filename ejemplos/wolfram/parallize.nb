@@ -1,0 +1,243 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6058,        233]
+NotebookOptionsPosition[      4653,        180]
+NotebookOutlinePosition[      4980,        195]
+CellTagsIndexPosition[      4937,        192]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Ejemplo de funci\[OAcute]n Parallelize", "Title",
+ CellChangeTimes->{{3.734320946669445*^9, 3.7343209552391768`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{"Print", "[", "i", "]"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", " ", "1", ",", " ", "10"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.734320964153427*^9, 3.734320964576007*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["1"], "Print",
+ CellChangeTimes->{3.7343209650428658`*^9}],
+
+Cell[BoxData["2"], "Print",
+ CellChangeTimes->{3.7343209650434*^9}],
+
+Cell[BoxData["3"], "Print",
+ CellChangeTimes->{3.7343209650438967`*^9}],
+
+Cell[BoxData["4"], "Print",
+ CellChangeTimes->{3.7343209650443077`*^9}],
+
+Cell[BoxData["5"], "Print",
+ CellChangeTimes->{3.7343209650450478`*^9}],
+
+Cell[BoxData["6"], "Print",
+ CellChangeTimes->{3.73432096504566*^9}],
+
+Cell[BoxData["7"], "Print",
+ CellChangeTimes->{3.73432096504605*^9}],
+
+Cell[BoxData["8"], "Print",
+ CellChangeTimes->{3.734320965046432*^9}],
+
+Cell[BoxData["9"], "Print",
+ CellChangeTimes->{3.7343209650468073`*^9}],
+
+Cell[BoxData["10"], "Print",
+ CellChangeTimes->{3.734320965047208*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Parallelize", "[", 
+  RowBox[{"Do", "[", 
+   RowBox[{
+    RowBox[{"Print", "[", "i", "]"}], ",", " ", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", " ", "1", ",", " ", "10"}], "}"}]}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.734320966752212*^9, 3.734320970268416*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["1"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.734320971822399*^9}],
+
+Cell[BoxData["4"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.7343209718280563`*^9}],
+
+Cell[BoxData["2"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.734320971848858*^9}],
+
+Cell[BoxData["5"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.734320971857616*^9}],
+
+Cell[BoxData["3"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.734320971871834*^9}],
+
+Cell[BoxData["6"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.7343209718805847`*^9}],
+
+Cell[BoxData["7"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.734320971895739*^9}],
+
+Cell[BoxData["9"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.734320971905261*^9}],
+
+Cell[BoxData["8"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.734320971920012*^9}],
+
+Cell[BoxData["10"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.734320971929364*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"First", "[", 
+  RowBox[{"AbsoluteTiming", "[", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"NSolve", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"Pi", "/", "E"}], " ", "*", " ", "i", " ", "*", " ", "x", 
+          "*", "x"}], "+", 
+         RowBox[{
+          RowBox[{"Log", "[", "i", "]"}], "*", "x"}], "+", 
+         RowBox[{"Sin", "[", "i", "]"}]}], "\[Equal]", "0"}], ",", " ", "x"}],
+       "]"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", " ", "1", ",", " ", "15000"}], "}"}]}], "]"}], "]"}], 
+  "]"}]], "Input"],
+
+Cell[BoxData["14.479579`"], "Output",
+ CellChangeTimes->{3.734320995492372*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"First", "[", 
+  RowBox[{"AbsoluteTiming", "[", 
+   RowBox[{"Parallelize", "[", 
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{"NSolve", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"Pi", "/", "E"}], " ", "*", " ", "i", " ", "*", " ", "x", 
+           "*", "x"}], "+", 
+          RowBox[{
+           RowBox[{"Log", "[", "i", "]"}], "*", "x"}], "+", 
+          RowBox[{"Sin", "[", "i", "]"}]}], "\[Equal]", "0"}], ",", " ", 
+        "x"}], "]"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", " ", "1", ",", " ", "15000"}], "}"}]}], "]"}], "]"}],
+    "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.73432098430805*^9, 3.73432099109197*^9}}],
+
+Cell[BoxData["7.831099`"], "Output",
+ CellChangeTimes->{3.7343210194933777`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{956, 1015},
+WindowMargins->{{Automatic, 0}, {0, 29}},
+FrontEndVersion->"11.0 para Linux x86 (64-bit) (July 28, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 123, 1, 93, "Title"],
+Cell[CellGroupData[{
+Cell[728, 27, 252, 6, 52, "Input"],
+Cell[CellGroupData[{
+Cell[1005, 37, 71, 1, 22, "Print"],
+Cell[1079, 40, 67, 1, 22, "Print"],
+Cell[1149, 43, 71, 1, 22, "Print"],
+Cell[1223, 46, 71, 1, 22, "Print"],
+Cell[1297, 49, 71, 1, 22, "Print"],
+Cell[1371, 52, 68, 1, 22, "Print"],
+Cell[1442, 55, 68, 1, 22, "Print"],
+Cell[1513, 58, 69, 1, 22, "Print"],
+Cell[1585, 61, 71, 1, 22, "Print"],
+Cell[1659, 64, 70, 1, 22, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1778, 71, 297, 8, 52, "Input"],
+Cell[CellGroupData[{
+Cell[2100, 83, 91, 2, 22, "Print"],
+Cell[2194, 87, 93, 2, 22, "Print"],
+Cell[2290, 91, 91, 2, 22, "Print"],
+Cell[2384, 95, 91, 2, 22, "Print"],
+Cell[2478, 99, 91, 2, 22, "Print"],
+Cell[2572, 103, 93, 2, 22, "Print"],
+Cell[2668, 107, 91, 2, 22, "Print"],
+Cell[2762, 111, 91, 2, 22, "Print"],
+Cell[2856, 115, 91, 2, 22, "Print"],
+Cell[2950, 119, 92, 2, 22, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3091, 127, 606, 18, 52, "Input"],
+Cell[3700, 147, 79, 1, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3816, 153, 726, 20, 52, "Input"],
+Cell[4545, 175, 80, 1, 63, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

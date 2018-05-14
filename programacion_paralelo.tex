@@ -1,0 +1,354 @@
+\documentclass[aspectratio=169]{beamer}
+
+\usepackage{default}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{lipsum}
+
+% ==================================================================================
+% Tipos
+% ==================================================================================
+\usepackage[sfdefault]{roboto}  %% Option 'sfdefault' only if the base font of the document is to be sans serif
+\usepackage[T1]{fontenc}
+
+
+
+% ==================================================================================
+%  Símbolos matemáticos
+% ==================================================================================
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+
+\def\N{\ensuremath{\mathbb{N}}}
+\def\Z{\ensuremath{\mathbb{Z}}}
+\def\Q{\ensuremath{\mathbb{Q}}}
+\def\R{\ensuremath{\mathbb{R}}}
+\def\C{\ensuremath{\mathbb{C}}}
+
+
+% ==================================================================================
+%  Colores
+% ==================================================================================
+
+\usepackage[]{xcolor}
+
+\definecolor{azulUCA}{cmyk}{1.00, 0.00, 0.00, 0.51}
+\definecolor{naranjaUCA}{cmyk}{0.00, 0.51, 1.00, 0.00}
+\definecolor{grisUCA}{cmyk}{0.00, 0.00, 0.00, 0.65}
+\definecolor{charcoal}{rgb}{0.21, 0.27, 0.31}
+\definecolor{darkjose}{HTML}{4a4a4a}
+
+% ==================================================================================
+%  Algunos diseños
+% ==================================================================================
+\usepackage{epigraph}
+
+\newcommand{\citainicial}[1]{
+	\raya
+	\begin{quotation}
+		\color{charcoal}{\textit{#1}}
+	\end{quotation}
+	\raya
+}
+
+\def\raya{
+	\par \hbox to
+	\linewidth{\hss \vrule width \textwidth height 0.2pt depth 0.5pt}
+	\par}
+
+\makeatletter
+
+\newcommand{\seccion}[1]{
+	\section*{\bfseries\color{naranjaUCA}{#1}}
+}
+
+\newcommand{\subseccion}[1]{
+	\subsection*{\bfseries\color{naranjaUCA}{#1}}
+}
+
+\setbeamercolor{frametitle}{fg=white,bg=azulUCA}
+
+\usepackage[theorems,breakable]{tcolorbox}
+
+\tcbuselibrary{theorems}
+
+\newtcbtheorem{problema}{Problema}%
+{
+	colback=azulUCA!5,
+	colframe=azulUCA,
+	fonttitle=\bfseries
+}{pr}
+
+\newtcbtheorem{formulacion}{Formulación}%
+{
+	colback=naranjaUCA!5,
+	colframe=naranjaUCA,
+	fonttitle=\bfseries
+}{for}
+
+\newtcbtheorem{autores}{Autores}%
+{
+	colback=azulUCA!5,
+	colframe=azulUCA,
+	fonttitle=\bfseries
+}{aut}
+
+%\addtobeamertemplate{background canvas}{\transboxin}{}
+
+% ==================================================================================
+%  Definiciones
+% ==================================================================================
+\title{\color{azulUCA}\textbf{Breve introducción a la programación en paralelo}}
+\subtitle{\color{azulUCA} José Carlos García}
+\date{}
+
+\setbeamertemplate{background}
+{\includegraphics[width=\paperwidth,height=\paperheight]{background.jpg}} 
+
+\usepackage{xcolor}
+\usepackage{listings}
+\setbeamerfont{frametitle}{series=\bfseries}
+\definecolor{mGreen}{rgb}{0,0.6,0}
+\definecolor{mGray}{rgb}{0.5,0.5,0.5}
+\definecolor{mPurple}{rgb}{0.58,0,0.82}
+\definecolor{backgroundColour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{CStyle}{
+	backgroundcolor=\color{backgroundColour},   
+	commentstyle=\color{mGreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{mGray},
+	stringstyle=\color{mPurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2,
+	language=C
+}
+
+
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+	\begin{center}
+		\href{http://creativecommons.org/licenses/by-sa/3.0/es/}{\includegraphics[width=4em]{cc-by-sa}}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\centering \LARGE \bfseries \color{naranjaUCA} Introducción
+\end{frame}
+
+% Ejemplos en la vida cotidiana.
+
+\begin{frame}
+	\frametitle{Ejemplos en la vida cotidiana}
+	\begin{itemize}
+		\item Supongamos que \textbf{tenemos un restaurante.}
+		\pause
+		\item Si tenemos \textbf{una persona trabajando a una velocidad media}, y nuestro restaurante \textbf{hay $n=10$ mesas ocupadas}, ¿Qué sucede?
+		\pause
+		\item Dado que tenemos una persona, y no un pulpo, \textbf{sólo puede atender a una persona a la vez.}
+		\pause
+		\item En este caso, tendríamos un ejemplo de \textbf{un trabajo que no se está \\realizando en paralelo (o de manera secuencial)}, y nuestro \\solitario camarero estará realizando $n$ operaciones él solito
+		\pause
+		\item \textbf{¿Cual es la mejor solución de nuestro problema?} \\¿Contratamos más camareros de velocidad media? \\¿Contratamos el mejor camarero del país?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+		\centering \LARGE \bfseries \color{naranjaUCA} Aplicaciones en el mundo matemático
+\end{frame}
+
+% Operaciones con vectores
+\begin{frame}[fragile]
+	\frametitle{Operaciones con vectores}
+	
+	\begin{itemize}
+		\item Sean $v, u \in \mathbb{R}^n$ si queremos calcular $w=u+v$ debemos calcular la suma de cada componente, esto es:
+		\pause
+		\item $w_i = v_i + u_i$ con $i = 1, 2, 3, ..., n$ (Observamos que cada $w_i$ es independiente del resto)
+		\pause
+		\item Por tanto, tenemos que hacer $n$ operaciones para obtener el valor de \\$w$. Sin embargo, si ejecutamos estas $n$ operaciones en paralelo, \\nos costaría casi lo mismo que hacer la suma de dos números.
+		\pause
+		\item Esta misma idea es aplicable también para calcular el producto \\de un número $\lambda$ y un vector $u$.
+	\end{itemize}
+\end{frame}
+
+
+% Producto escalar
+\begin{frame}[fragile]
+	\frametitle{Producto escalar: No es paralelizable}
+	
+	\begin{itemize}
+		\item En este ejemplo, veremos que \textbf{no siempre se puede paralelizar un problema}, y veremos uno de los problemas más comunes a la hora de paralelizar; \textbf{Las condiciones de carrera}
+		\pause
+		\item Sea $v, u \in \mathbb{R}^n$ \textbf{dos vectores a los que queremos calcular el producto escalar}, $s=u \cdot v$. Recordemos que el producto escalar se puede calcular como \\la suma del producto de las componentes.
+		\pause
+		\item Para programar esto, tenemos que ir sumando a una variable\\real $s$ el producto de todos los componentes, $v_i * u_i$.
+		\pause
+		\item Supongamos que queremos hacerlo en paralelo, y sucede \\que las componentes $i, j$ se ejecutan al mismo tiempo.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Producto escalar: No es paralelizable}
+	
+	\begin{itemize}
+		\item Por tanto, al mismo tiempo se ejecutará $s = s + v_i * u_i$ y $s = s + v_j * u_j$.
+		\pause
+		\item Al realizarse al mismo tiempo, el valor $s$ que se suma al producto, será el mismo, por tanto, dado que sólo se asignará un valor de $s$ (Supongamos\\ que es $i$) el valor $v_j * u_j$ no se sumará a $s$.
+		\pause
+		\item Por tanto, el producto escalar no podemos paralelizarlo, pues \\\textbf{tenemos una condición de carrera.}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Otras aplicaciones}
+	
+	\begin{itemize}
+		\item Resolución de sistemas de ecuaciones; Jacobi es fácilmente paralizable.
+		\pause
+		\item Criptografía; Encontrar primos, blockchain...
+		\pause
+		\item Cálculos con matrices.
+		\pause
+		\item Encontrar mínimos de funciones.
+		\pause
+		\item Encontrar gran cantidad de raíces de una función a la vez.
+		\pause
+		\item Acelerar método de diferencias finitas.
+		\pause
+		\item Trabajar con Big Data.\pause\\ Podemos procesar muchos datos a la vez.
+		\pause
+		\item Acelerar todas las tareas que se hacen por fuerza bruta;\\Romper contraseñas, encontrar combinaciones, ...
+		\pause
+		\item ...
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\centering \LARGE \bfseries \color{naranjaUCA} Algunos conceptos básicos
+\end{frame}
+
+\begin{frame}
+	\frametitle{Conceptos básicos}
+
+	\begin{itemize}
+		\item Decimos que \textbf{un algoritmo de $n$ pasos se puede paralelizar} si cada $n$ iteración no depende del resto de iteraciones.
+		\pause
+		\item Formas de paralelización:
+		\begin{itemize}
+			\item \textbf{CPU:} Utilizando los hilos disponibles en el procesador de nuestro ordenador. Todos los hilos son de alto rendimiento, pero la cantidad de hilos es \\bastante pequeña.
+			\pause
+			\item \textbf{GPU:} Utilizando los hilos disponibles en la tarjeta gráfica de nuestro\\ ordenador. Los hilos tienen un menor desempeño que los de la \\CPU, sin embargo, contiene una gran cantidad de hilos.
+			\pause 
+			\item \textbf{Red:} Distribuimos el trabajo entre varios ordenadores a través\\ de una conexión de red.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\centering \LARGE \bfseries \color{azulUCA} Programar en paralelo
+\end{frame}
+
+\begin{frame}
+	\centering \LARGE \bfseries \color{naranjaUCA} Trabajar con la CPU
+\end{frame}
+
+\begin{frame}
+	\frametitle{Wolfram Language}
+	
+	\begin{itemize}
+		\item Función \textit{ParallelX[]}.
+		\pause
+		\item \pause \textbf{Demo de \textit{ParallelX}}
+		\pause
+		\item Función \textit{Parallelize[]}
+		\pause
+		\item \pause \textbf{Demo de \textit{Parallelize}}
+		\pause
+	\end{itemize}
+\end{frame}
+
+% http://gforge.se/2015/02/how-to-go-parallel-in-r-basics-tips/
+\begin{frame}
+	\frametitle{R}
+	
+	\begin{itemize}
+		\item \textit{lapply}: \pause Aplicar una lista a una función y obtener el resultado.
+		\pause
+		\item \textit{Librería paralell}: \pause Esta librería nos permite paralelizar funciones en R. \pause \\Tenemos dos funciones importantes; \textit{detectCores()} nos detecta el \\número de núcleos de nuestro ordenador. \pause\textit{makeCluster(corenum)} \\inicializa una instancia en paralelo, donde corenum es el \\número de núcleos que quieres usar.
+		\item \textit{parLapply}: Igual que la función lapply, pero en paralelo.
+		\item \textit{Otras funciones interesantes:} Paquete foreach, nos permite\\ejecutar una acción en una lista de elementos.
+		\item \textbf{Demo}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{C: PThread \& OpenMP (Unix)}
+	
+	\pause
+	\begin{itemize}
+		\item La manera más convencional es usando pthread.h \pause
+		
+		\begin{itemize}
+			\item Tenemos que incluir \textit{pthread.h} \pause
+			\item Para ejecutar una función en paralelo, la llamamos con \textit{phtread\_create.}
+			\item Si queremos esperar que un hilo termine antes de ejecutar algo, \\llamamos \textit{pthread\_join}
+		\end{itemize}
+	
+		\item Con OpenMP todo esto se simplifica, \pause
+		% http://lsi.ugr.es/jmantas/pdp/ayuda/omp_ayuda.php?ayuda=omp_directivas
+		\begin{itemize}
+			\item \#pragma omp parallel for\pause
+			\item \#pragma omp parallel
+			\item ...\pause
+		\end{itemize}
+	
+		\item \textbf{DEMO}
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\centering \LARGE \bfseries \color{naranjaUCA} Trabajar con la GPU
+\end{frame}
+
+\begin{frame}
+	\frametitle{Problemas}
+	
+	\begin{itemize}
+		\item La GPU y la CPU por lo general, \textbf{NO COMPARTEN} memoria. \pause
+		\item Copiar memoria de la CPU a la GPU (y viceversa) es \textit{lento}.\pause
+		\item Por tanto, necesitamos unas funciones diferentes para reservar memoria para CPU y GPU. \pause
+		\item Las funciones que definamos en la CPU, en general, no son\\ accesibles por la GPU. \pause
+		\item Las variables que definamos en la CPU, en general, no son \\accesibles desde la GPU. \pause
+		\item Existen compiladores libres, como OpenCL, sin embargo, el \\compilador propietario CUDA funciona mejor en gráficas\\ NVIDIA.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{CUDA}
+	
+	\begin{itemize}
+		\item Es un lenguaje desarrollado por NVIDIA basado en C++, orientado a programar en GPU. \pause
+		\item \textit{cudaMalloc: } Equivalente a malloc, pero para reservar memoria en la GPU.
+	\end{itemize}
+\end{frame}
+\end{document}
