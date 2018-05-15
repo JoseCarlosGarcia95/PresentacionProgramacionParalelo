@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6058,        233]
-NotebookOptionsPosition[      4653,        180]
-NotebookOutlinePosition[      4980,        195]
-CellTagsIndexPosition[      4937,        192]
+NotebookDataLength[      6311,        233]
+NotebookOptionsPosition[      4899,        180]
+NotebookOutlinePosition[      5233,        195]
+CellTagsIndexPosition[      5190,        192]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -36,34 +36,34 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData["1"], "Print",
- CellChangeTimes->{3.7343209650428658`*^9}],
+ CellChangeTimes->{3.7343209650428658`*^9, 3.735387713877207*^9}],
 
 Cell[BoxData["2"], "Print",
- CellChangeTimes->{3.7343209650434*^9}],
+ CellChangeTimes->{3.7343209650428658`*^9, 3.735387713877965*^9}],
 
 Cell[BoxData["3"], "Print",
- CellChangeTimes->{3.7343209650438967`*^9}],
+ CellChangeTimes->{3.7343209650428658`*^9, 3.735387713878875*^9}],
 
 Cell[BoxData["4"], "Print",
- CellChangeTimes->{3.7343209650443077`*^9}],
+ CellChangeTimes->{3.7343209650428658`*^9, 3.7353877138799686`*^9}],
 
 Cell[BoxData["5"], "Print",
- CellChangeTimes->{3.7343209650450478`*^9}],
+ CellChangeTimes->{3.7343209650428658`*^9, 3.7353877138808823`*^9}],
 
 Cell[BoxData["6"], "Print",
- CellChangeTimes->{3.73432096504566*^9}],
+ CellChangeTimes->{3.7343209650428658`*^9, 3.7353877138818197`*^9}],
 
 Cell[BoxData["7"], "Print",
- CellChangeTimes->{3.73432096504605*^9}],
+ CellChangeTimes->{3.7343209650428658`*^9, 3.735387713883909*^9}],
 
 Cell[BoxData["8"], "Print",
- CellChangeTimes->{3.734320965046432*^9}],
+ CellChangeTimes->{3.7343209650428658`*^9, 3.7353877138852587`*^9}],
 
 Cell[BoxData["9"], "Print",
- CellChangeTimes->{3.7343209650468073`*^9}],
+ CellChangeTimes->{3.7343209650428658`*^9, 3.7353877138865557`*^9}],
 
 Cell[BoxData["10"], "Print",
- CellChangeTimes->{3.734320965047208*^9}]
+ CellChangeTimes->{3.7343209650428658`*^9, 3.735387713891077*^9}]
 }, Open  ]]
 }, Open  ]],
 
@@ -83,43 +83,43 @@ Cell[CellGroupData[{
 
 Cell[BoxData["1"], "Print",
  ShowCellLabel->True,
- CellChangeTimes->{3.734320971822399*^9}],
+ CellChangeTimes->{3.735387722575158*^9}],
 
 Cell[BoxData["4"], "Print",
  ShowCellLabel->True,
- CellChangeTimes->{3.7343209718280563`*^9}],
+ CellChangeTimes->{3.735387722600396*^9}],
 
 Cell[BoxData["2"], "Print",
  ShowCellLabel->True,
- CellChangeTimes->{3.734320971848858*^9}],
+ CellChangeTimes->{3.735387722628048*^9}],
 
 Cell[BoxData["5"], "Print",
  ShowCellLabel->True,
- CellChangeTimes->{3.734320971857616*^9}],
+ CellChangeTimes->{3.735387722657651*^9}],
 
 Cell[BoxData["3"], "Print",
  ShowCellLabel->True,
- CellChangeTimes->{3.734320971871834*^9}],
+ CellChangeTimes->{3.7353877226879063`*^9}],
 
 Cell[BoxData["6"], "Print",
  ShowCellLabel->True,
- CellChangeTimes->{3.7343209718805847`*^9}],
+ CellChangeTimes->{3.735387722720323*^9}],
 
 Cell[BoxData["7"], "Print",
  ShowCellLabel->True,
- CellChangeTimes->{3.734320971895739*^9}],
+ CellChangeTimes->{3.735387722754426*^9}],
 
 Cell[BoxData["9"], "Print",
  ShowCellLabel->True,
- CellChangeTimes->{3.734320971905261*^9}],
+ CellChangeTimes->{3.7353877228098707`*^9}],
 
 Cell[BoxData["8"], "Print",
  ShowCellLabel->True,
- CellChangeTimes->{3.734320971920012*^9}],
+ CellChangeTimes->{3.735387722843543*^9}],
 
 Cell[BoxData["10"], "Print",
  ShowCellLabel->True,
- CellChangeTimes->{3.734320971929364*^9}]
+ CellChangeTimes->{3.7353877228788157`*^9}]
 }, Open  ]]
 }, Open  ]],
 
@@ -178,8 +178,8 @@ Cell[BoxData["7.831099`"], "Output",
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{956, 1015},
-WindowMargins->{{Automatic, 0}, {0, 29}},
+WindowSize->{956, 1010},
+WindowMargins->{{Automatic, 1}, {1, Automatic}},
 FrontEndVersion->"11.0 para Linux x86 (64-bit) (July 28, 2016)",
 StyleDefinitions->"Default.nb"
 ]
@@ -199,45 +199,43 @@ Cell[580, 22, 123, 1, 93, "Title"],
 Cell[CellGroupData[{
 Cell[728, 27, 252, 6, 52, "Input"],
 Cell[CellGroupData[{
-Cell[1005, 37, 71, 1, 22, "Print"],
-Cell[1079, 40, 67, 1, 22, "Print"],
-Cell[1149, 43, 71, 1, 22, "Print"],
-Cell[1223, 46, 71, 1, 22, "Print"],
-Cell[1297, 49, 71, 1, 22, "Print"],
-Cell[1371, 52, 68, 1, 22, "Print"],
-Cell[1442, 55, 68, 1, 22, "Print"],
-Cell[1513, 58, 69, 1, 22, "Print"],
-Cell[1585, 61, 71, 1, 22, "Print"],
-Cell[1659, 64, 70, 1, 22, "Print"]
+Cell[1005, 37, 93, 1, 22, "Print"],
+Cell[1101, 40, 93, 1, 22, "Print"],
+Cell[1197, 43, 93, 1, 22, "Print"],
+Cell[1293, 46, 95, 1, 22, "Print"],
+Cell[1391, 49, 95, 1, 22, "Print"],
+Cell[1489, 52, 95, 1, 22, "Print"],
+Cell[1587, 55, 93, 1, 22, "Print"],
+Cell[1683, 58, 95, 1, 22, "Print"],
+Cell[1781, 61, 95, 1, 22, "Print"],
+Cell[1879, 64, 94, 1, 22, "Print"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1778, 71, 297, 8, 52, "Input"],
+Cell[2022, 71, 297, 8, 52, "Input"],
 Cell[CellGroupData[{
-Cell[2100, 83, 91, 2, 22, "Print"],
-Cell[2194, 87, 93, 2, 22, "Print"],
-Cell[2290, 91, 91, 2, 22, "Print"],
-Cell[2384, 95, 91, 2, 22, "Print"],
-Cell[2478, 99, 91, 2, 22, "Print"],
-Cell[2572, 103, 93, 2, 22, "Print"],
-Cell[2668, 107, 91, 2, 22, "Print"],
-Cell[2762, 111, 91, 2, 22, "Print"],
-Cell[2856, 115, 91, 2, 22, "Print"],
-Cell[2950, 119, 92, 2, 22, "Print"]
+Cell[2344, 83, 91, 2, 22, "Print"],
+Cell[2438, 87, 91, 2, 22, "Print"],
+Cell[2532, 91, 91, 2, 22, "Print"],
+Cell[2626, 95, 91, 2, 22, "Print"],
+Cell[2720, 99, 93, 2, 22, "Print"],
+Cell[2816, 103, 91, 2, 22, "Print"],
+Cell[2910, 107, 91, 2, 22, "Print"],
+Cell[3004, 111, 93, 2, 22, "Print"],
+Cell[3100, 115, 91, 2, 22, "Print"],
+Cell[3194, 119, 94, 2, 22, "Print"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3091, 127, 606, 18, 52, "Input"],
-Cell[3700, 147, 79, 1, 30, "Output"]
+Cell[3337, 127, 606, 18, 52, "Input"],
+Cell[3946, 147, 79, 1, 30, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3816, 153, 726, 20, 52, "Input"],
-Cell[4545, 175, 80, 1, 63, "Output"]
+Cell[4062, 153, 726, 20, 52, "Input"],
+Cell[4791, 175, 80, 1, 30, "Output"]
 }, Open  ]]
 }, Open  ]]
 }
 ]
 *)
-
-(* End of internal cache information *)
 

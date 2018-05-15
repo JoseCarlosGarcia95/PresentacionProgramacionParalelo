@@ -348,7 +348,13 @@
 	
 	\begin{itemize}
 		\item Es un lenguaje desarrollado por NVIDIA basado en C++, orientado a programar en GPU. \pause
-		\item \textit{cudaMalloc: } Equivalente a malloc, pero para reservar memoria en la GPU.
+		\item \textit{cudaMalloc: } Equivalente a malloc, pero para reservar memoria en la \\GPU. También tenemos \textit{cudaFree}.\pause
+		\item \textit{cudaMemcpy: } Nos permite copiar memoria de la \\CPU a la GPU (y viceversa) \pause
+		\item Para definir una función que se llame en la GPU, debemos\\ poner delante \textit{\_\_global\_\_} ; \pause \textit{\_\_global\_\_ void funcion(...)} \pause
+		\item Para llamarla, escribimos \textit{funcion<<bloques, hilos>>(args)} \pause
+		\item Wolfram Language, permite ejecutar código en CUDA.\pause
+		\item \textbf{DEMO}
 	\end{itemize}
 \end{frame}
+
 \end{document}
