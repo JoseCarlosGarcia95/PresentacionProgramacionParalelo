@@ -286,7 +286,6 @@
 	\end{itemize}
 \end{frame}
 
-% http://gforge.se/2015/02/how-to-go-parallel-in-r-basics-tips/
 \begin{frame}
 	\frametitle{R}
 	
@@ -340,6 +339,8 @@
 		\item Las funciones que definamos en la CPU, en general, no son\\ accesibles por la GPU. \pause
 		\item Las variables que definamos en la CPU, en general, no son \\accesibles desde la GPU. \pause
 		\item Existen compiladores libres, como OpenCL, sin embargo, el \\compilador propietario CUDA funciona mejor en gráficas\\ NVIDIA.
+		\pause
+		\item Si queremos trabajar con matrices como en C, se complica.
 	\end{itemize}
 \end{frame}
 
@@ -357,4 +358,76 @@
 	\end{itemize}
 \end{frame}
 
+
+\begin{frame}
+	\centering \LARGE \bfseries \color{naranjaUCA} Conclusiones
+\end{frame}
+
+\begin{frame}
+	\frametitle{Entorno de pruebas}
+	Todas las pruebas se han realizado se han realizado en un ordenador con las siguientes características:
+	\pause
+	\begin{itemize}
+		\item \textbf{Procesador: } Intel i7-5500U (4) @ 3.0GHz 
+		\item \textbf{Sistema operativo: } Debian GNU/Linux 9.4 (stretch) x86\_64 
+		\item \textbf{Núcleo: } 4.9.0-6-amd64 
+		\item \textbf{Tarjeta gráfica: } NVIDIA GeForce 930M (2GB RAM)
+		\item \textbf{Memoria: } 12GB RAM
+		
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Mathematica VS C VS CUDA (Segundos)}
+	\includegraphics[width=\textwidth]{calor_mathematica_vs_buenos.pdf}
+\end{frame}
+
+\begin{frame}
+	\frametitle{C VS CUDA (Segundos)}
+	\includegraphics[width=\textwidth]{c_cuda.pdf}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Consumo energético}
+	¿Cómo hemos realizado las pruebas?
+	\begin{enumerate}
+		\item Hemos medido los amperios de la batería durante un minuto.
+		\pause
+		\item Hemos calculado el tiempo de descarga media en $\mu A/s$
+		\pause
+		\item Hemos abierto nuestra aplicación, y hemos medido los amperios \\durante un minuto.
+		\pause
+		\item Hemos calculado la descarga media con la aplicación abierta \\en $\mu A/s$
+		\pause
+		\item El consumo energético de nuestra aplicación lo calculamos \\como la diferencia de las dos velocidades.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Consumo energético}
+\end{frame}
+
+\begin{frame}
+	\centering \LARGE \bfseries \color{naranjaUCA} Referencias
+\end{frame}
+
+\begin{frame}
+	\frametitle{Referencias}
+	\begin{itemize}
+		\item \textbf{Programación paralela en R} - https://goo.gl/i7nTNw
+		\item \textbf{Documentación OpenMP} - https://goo.gl/xZ5b4X
+		\item \textbf{CUDA} - https://goo.gl/avaPcC
+		\item \textbf{Pthread} - https://goo.gl/xG5eGy
+		\item Aplicación \textit{man} de Debian
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Código Fuente (Licencia GPLv3)}
+	\begin{itemize}
+		\item \textbf{Presentación} - https://git.io/vpjVl
+		\item \textbf{Aplicación para medir la energía} - https://git.io/vpjVo
+		\item \textbf{Experimentos numéricos} - https://git.io/vpjVS
+	\end{itemize}
+\end{frame}
 \end{document}
